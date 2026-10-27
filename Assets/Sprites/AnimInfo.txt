@@ -1,0 +1,10 @@
+Idle 0 -5
+Run 6- 13
+StepBack  14 - 17
+Hit 18 -24
+Jump 25 - 30
+Fall 31 - 36
+Death 37 - 46
+Hit 47 - 50
+Dash Fowrward 51 - 56
+Ulti 57 - 76
