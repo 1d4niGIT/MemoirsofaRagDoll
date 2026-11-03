@@ -8,6 +8,7 @@ public static class InputManagerController
 
     public static Action<Vector2> OnMove;
     public static Action OnJump;
+    public static Action OnAttack;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void Initialize()
@@ -18,6 +19,12 @@ public static class InputManagerController
         inputs.Player.Move.performed += OnMovementPerformed;
         inputs.Player.Move.canceled += OnMovementCanceled;
         inputs.Player.Jump.performed += OnJumpPerformed;
+        inputs.Player.Attack.performed += OnAttackPerformed;
+    }
+
+    private static void OnAttackPerformed(InputAction.CallbackContext context)
+    {
+        OnAttack?.Invoke();
     }
 
     private static void OnMovementPerformed(InputAction.CallbackContext context)
