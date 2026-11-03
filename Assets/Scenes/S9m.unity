@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 1406876386}
   - component: {fileID: 1406876388}
   - component: {fileID: 1406876387}
+  - component: {fileID: 1406876389}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -551,6 +552,8 @@ MonoBehaviour:
   jumpForce: 5
   isGrounded: 0
   moveInput: 0
+  AttackRadius: 0
+  damage: 24
 --- !u!95 &1406876386
 Animator:
   serializedVersion: 7
@@ -646,6 +649,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.53918636, y: 0.9535717}
   m_EdgeRadius: 0
+--- !u!114 &1406876389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406876381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f012fd90867b614688c1fbed312a4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimatorController
+  controller: {fileID: 1406876386}
 --- !u!1 &1410645113
 GameObject:
   m_ObjectHideFlags: 0

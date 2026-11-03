@@ -20,7 +20,7 @@ public class PlayerAnimatorController : MonoBehaviour
 
     private void SetGroundAnimation (bool value)
     {
-        controller.SetBool("IsGrouned", value);
+        controller.SetBool("IsGrounded", value);
     }
 
     private void PlayJumpAnimation()
