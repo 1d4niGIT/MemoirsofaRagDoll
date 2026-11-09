@@ -10,7 +10,7 @@ public class PlayerManagerController : MonoBehaviour
     [Header("Ground Check")]
     public bool isGrounded;
     public float moveInput;
-    public LayerMask groundLayer;        
+    public LayerMask groundLayer;                // capa del suelo/paredes/techos
     public float groundCheckDistance = 0.05f;
 
     [Header("Salto (Coyote / Buffer / Variable)")]
@@ -23,7 +23,7 @@ public class PlayerManagerController : MonoBehaviour
     public int cornerSteps = 5;
 
     [Header("Agacharse")]
-    [Range(0.1f, 1f)] public float crouchSpeedMultiplier = 0.5f;   
+    [Range(0.1f, 1f)] public float crouchSpeedMultiplier = 0.5f;   // mitad de velocidad
     [Range(0.3f, 0.9f)] public float crouchHeightRatio = 0.5f;
 
     [Header("Esconderse")]
@@ -31,12 +31,12 @@ public class PlayerManagerController : MonoBehaviour
     [Range(0f, 1f)] public float hiddenAlpha = 0.6f;
 
     [Header("Balanceo (swing)")]
-    public float swingPump = 6f;                 
+    public float swingPump = 6f;                 // energia que aporta mover izquierda/derecha
     public float swingDamping = 0.15f;
-    public float maxAngularSpeed = 6f;           
-    public float launchMultiplier = 1.3f;      
+    public float maxAngularSpeed = 6f;           // rad/s
+    public float launchMultiplier = 1.3f;        // mas balanceo = mas lejos
 
-  
+    // ---------------- estado ----------------
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private Vector2 standSize, standOffset;
@@ -91,18 +91,18 @@ public class PlayerManagerController : MonoBehaviour
         }
     }
 
-    
+    // ------------------------------------------------------------ UPDATE
     private void Update()
     {
         if (IsSwinging || IsHidden) return;
 
-        
+        // Agacharse / levantarse
         UpdateCrouch();
 
-        
+        // Coyote time
         coyoteCounter = isGrounded ? coyoteTime : coyoteCounter - Time.deltaTime;
 
-        
+        // Jump buffer
         bufferCounter -= Time.deltaTime;
 
         if (bufferCounter > 0f && coyoteCounter > 0f && !isCrouching)
@@ -132,9 +132,13 @@ public class PlayerManagerController : MonoBehaviour
         CornerCorrection();
     }
 
-    
+    // ------------------------------------------------------------ INPUT
     private void Move(Vector2 input)
     {
+        // Si estas escondido y te mueves, sales del escondite y vuelves a verse
+        if (IsHidden && Mathf.Abs(input.x) > 0.1f)
+            SetHidden(false);
+
         moveInput = input.x;
     }
 
@@ -142,12 +146,12 @@ public class PlayerManagerController : MonoBehaviour
     {
         if (IsSwinging) { Launch(); return; }
         if (IsHidden) return;
-        bufferCounter = jumpBufferTime;     
+        bufferCounter = jumpBufferTime;     // se recuerda el salto unos ms (jump buffer)
     }
 
     private void JumpReleased()
     {
-        
+        // Salto variable: soltar el boton recorta la subida
         if (!IsSwinging && rb.linearVelocity.y > 0f)
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
     }
@@ -166,7 +170,7 @@ public class PlayerManagerController : MonoBehaviour
         if (currentHideSpot != null && isGrounded) SetHidden(true);
     }
 
-   
+    // ------------------------------------------------------------ SUELO
     private void CheckGround()
     {
         Bounds b = col.bounds;
@@ -175,7 +179,7 @@ public class PlayerManagerController : MonoBehaviour
         isGrounded = hit.collider != null && rb.linearVelocity.y <= 0.01f;
     }
 
-    
+    // ------------------------------------------------------------ CORRECCION DE ESQUINA
     private void CornerCorrection()
     {
         if (rb.linearVelocity.y <= 0f) return;
@@ -201,7 +205,7 @@ public class PlayerManagerController : MonoBehaviour
         }
     }
 
-   
+    // ------------------------------------------------------------ AGACHARSE
     private void UpdateCrouch()
     {
         bool wantsCrouch = crouchHeld && isGrounded;
@@ -230,9 +234,15 @@ public class PlayerManagerController : MonoBehaviour
         return !Physics2D.OverlapBox(center, size, 0f, groundLayer);
     }
 
-   
+    // ------------------------------------------------------------ ESCONDERSE
     private void SetHidden(bool hidden)
     {
+        if (hidden && (currentHideSpot == null || currentHideSpot.objectSprite == null))
+        {
+            Debug.LogWarning("HideSpot sin Object Sprite asignado: no se puede esconder.");
+            return;
+        }
+
         IsHidden = hidden;
         if (spriteRenderer == null) return;
 
@@ -253,7 +263,7 @@ public class PlayerManagerController : MonoBehaviour
         }
     }
 
-    
+    // ------------------------------------------------------------ BALANCEO
     private void StartSwing(SwingPoint point)
     {
         activeSwing = point;
@@ -274,7 +284,7 @@ public class PlayerManagerController : MonoBehaviour
         float dt = Time.fixedDeltaTime;
         float L = activeSwing.length;
 
-        
+        // Pendulo: gravedad + empujon del jugador (izq/der) + perdida de energia
         float accel = -(Mathf.Abs(Physics2D.gravity.y) / L) * Mathf.Sin(swingAngle);
         accel += moveInput * swingPump;
         accel -= swingAngularVel * swingDamping;
@@ -289,7 +299,7 @@ public class PlayerManagerController : MonoBehaviour
 
     private void Launch()
     {
-        
+        // velocidad tangencial = w * L  ->  mas balanceo = mas energia = mas lejos
         float L = activeSwing.length;
         Vector2 tangent = new Vector2(Mathf.Cos(swingAngle), Mathf.Sin(swingAngle));
 
@@ -299,7 +309,7 @@ public class PlayerManagerController : MonoBehaviour
         coyoteCounter = 0f;
     }
 
-   
+    // ------------------------------------------------------------ TRIGGERS
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out HideSpot hs)) currentHideSpot = hs;

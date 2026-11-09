@@ -8,9 +8,9 @@ public static class InputManagerController
 
     public static Action<Vector2> OnMove;
     public static Action OnJump;
-    public static Action OnJumpReleased;      
-    public static Action<bool> OnCrouch;      
-    public static Action OnInteract;          
+    public static Action OnJumpReleased;      // salto variable
+    public static Action<bool> OnCrouch;      // true = presionado, false = soltado
+    public static Action OnInteract;          // esconderse / agarrarse a un punto de balanceo
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void Initialize()
@@ -24,7 +24,8 @@ public static class InputManagerController
         inputs.Player.Jump.canceled += OnJumpCanceled;
         inputs.Player.Crouch.performed += ctx => OnCrouch?.Invoke(true);
         inputs.Player.Crouch.canceled += ctx => OnCrouch?.Invoke(false);
-        inputs.Player.Interact.performed += ctx => OnInteract?.Invoke();
+        // started = al presionar (funciona aunque la accion tenga la interaccion "Hold")
+        inputs.Player.Interact.started += ctx => OnInteract?.Invoke();
     }
 
     private static void OnMovementPerformed(InputAction.CallbackContext context)
