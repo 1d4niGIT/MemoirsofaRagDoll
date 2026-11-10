@@ -284,7 +284,7 @@ public class PlayerManagerController : MonoBehaviour
         float dt = Time.fixedDeltaTime;
         float L = activeSwing.length;
 
-        // Pendulo: gravedad + empujon del jugador (izq/der) + perdida de energia
+        
         float accel = -(Mathf.Abs(Physics2D.gravity.y) / L) * Mathf.Sin(swingAngle);
         accel += moveInput * swingPump;
         accel -= swingAngularVel * swingDamping;
@@ -299,7 +299,7 @@ public class PlayerManagerController : MonoBehaviour
 
     private void Launch()
     {
-        // velocidad tangencial = w * L  ->  mas balanceo = mas energia = mas lejos
+       
         float L = activeSwing.length;
         Vector2 tangent = new Vector2(Mathf.Cos(swingAngle), Mathf.Sin(swingAngle));
 
@@ -309,7 +309,7 @@ public class PlayerManagerController : MonoBehaviour
         coyoteCounter = 0f;
     }
 
-    // ------------------------------------------------------------ TRIGGERS
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out HideSpot hs)) currentHideSpot = hs;
