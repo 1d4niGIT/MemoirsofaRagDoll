@@ -20,6 +20,8 @@ namespace RagDoll.Player
         /// <summary>True = el jugador no se mueve horizontalmente (ej. escondido).</summary>
         public bool MovementLocked { get; set; }
 
+        public bool ExternalMovement { get; set; }
+
         private Rigidbody2D body;
         private IInputProvider input;
         private IAbility[] abilities;
@@ -64,6 +66,7 @@ namespace RagDoll.Player
 
         private void Move()
         {
+            if (ExternalMovement) return;
             float horizontal = MovementLocked ? 0f : input.Horizontal;
 
             // Unity 6: Rigidbody2D.velocity pasa a llamarse linearVelocity.

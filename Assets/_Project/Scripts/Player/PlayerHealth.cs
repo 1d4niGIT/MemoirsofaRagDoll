@@ -8,7 +8,7 @@ namespace RagDoll.Player
     /// esa interfaz. Esta clase NO sabe nada de barras de vida, sonidos ni animaciones:
     /// solo gestiona el numero y publica eventos para que otros sistemas reaccionen (S de SOLID).
     /// </summary>
-    public class PlayerHealth : MonoBehaviour, IDamageable
+    public class PlayerHealth : MonoBehaviour, IDamageable, IKillable
     {
         [SerializeField] private int maxHealth = 5;
         [SerializeField] private float invulnerabilityTime = 1f; // margen tras recibir dano
@@ -56,6 +56,14 @@ namespace RagDoll.Player
 
             CurrentHealth = Mathf.Min(maxHealth, CurrentHealth + amount);
             GameEvents.RaiseHealthChanged(CurrentHealth, maxHealth);
+        }
+
+        public void Kill()
+        {
+            if (!IsAlive) return;
+            CurrentHealth = 0;
+            GameEvents.RaiseHealthChanged(CurrentHealth, maxHealth);
+            GameEvents.RaisePlayerDied();
         }
     }
 }

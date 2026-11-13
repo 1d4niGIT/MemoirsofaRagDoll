@@ -43,6 +43,10 @@ namespace RagDoll.Core
         /// <summary>Se completo el nivel actual.</summary>
         public static event Action OnLevelCompleted;
 
+        public static event Action<float, float> OnThreadChanged;   // hilo actual, hilo maximo
+
+        public static event Action<bool, float> OnAimChanged;       // apuntando, fuerza de 0 a 1
+
         // ---------- Metodos para publicar ----------
         public static void RaisePlayerDamaged(int amount) => OnPlayerDamaged?.Invoke(amount);
         public static void RaiseHealthChanged(int current, int max) => OnHealthChanged?.Invoke(current, max);
@@ -55,6 +59,9 @@ namespace RagDoll.Core
         public static void RaiseGamePaused(bool isPaused) => OnGamePaused?.Invoke(isPaused);
         public static void RaiseLevelStarted(int levelIndex) => OnLevelStarted?.Invoke(levelIndex);
         public static void RaiseLevelCompleted() => OnLevelCompleted?.Invoke();
+
+        public static void RaiseThreadChanged(float current, float max) => OnThreadChanged?.Invoke(current, max);
+        public static void RaiseAimChanged(bool isAiming, float power01) => OnAimChanged?.Invoke(isAiming, power01);
 
         // ---------- Limpieza ----------
         /// <summary>
@@ -73,6 +80,8 @@ namespace RagDoll.Core
             OnGamePaused = null;
             OnLevelStarted = null;
             OnLevelCompleted = null;
+            OnThreadChanged = null;
+            OnAimChanged = null;
         }
     }
 }
