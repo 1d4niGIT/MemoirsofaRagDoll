@@ -42,6 +42,7 @@ namespace RagDoll.Player
 
         [Header("Visual (opcional)")]
         [SerializeField] private LineRenderer threadLine;       // hilo hacia el alfiler
+        [SerializeField] private LineRenderer flyingThreadLine; // hilo del alfiler en vuelo mientras cuelgas (si se deja vacio, se crea una copia de threadLine)
         [SerializeField] private LineRenderer aimLine;          // linea de arrastre: de Mino hacia el puntero
         [SerializeField] private Transform rangeIndicator;      // la cupula: objeto FUERA de Mino, se muestra al apuntar
 
@@ -109,7 +110,15 @@ namespace RagDoll.Player
             if (aimInput == null)
                 Debug.LogError("SwingAbility necesita un componente que implemente IAimInput (ej. PlayerInput).", this);
 
+            // Colgado de un alfiler, el hilo del alfiler nuevo necesita su propia linea.
+            if (flyingThreadLine == null && threadLine != null)
+            {
+                flyingThreadLine = Instantiate(threadLine, threadLine.transform.parent);
+                flyingThreadLine.name = threadLine.name + "_Flying";
+            }
+
             PrepareLine(threadLine);
+            PrepareLine(flyingThreadLine);
             PrepareLine(aimLine);
             PrepareLine(trajectoryLine);
 
@@ -395,6 +404,7 @@ namespace RagDoll.Player
             if (aimLine != null) aimLine.enabled = false;
             if (trajectoryLine != null) trajectoryLine.enabled = false;
             if (threadLine != null) threadLine.enabled = false;
+            if (flyingThreadLine != null) flyingThreadLine.enabled = false;
             previewCached = false;
         }
 
@@ -410,16 +420,24 @@ namespace RagDoll.Player
         {
             if (threadLine == null) return;
 
-            // El hilo se dibuja hacia el alfiler en que cuelga; si no cuelga, hacia el que vuela.
-            Transform lineTarget = pin != null ? pin.transform : (flyingPin != null ? flyingPin.transform : null);
+            // Linea principal: hacia el alfiler en que cuelga; si no cuelga, hacia el que vuela.
+            Transform mainTarget = pin != null ? pin.transform : (flyingPin != null ? flyingPin.transform : null);
+            DrawThread(threadLine, mainTarget);
 
-            threadLine.enabled = lineTarget != null;
+            // Colgado Y lanzando: el alfiler en vuelo lleva su propio hilo desde Mino.
+            Transform flyingTarget = (pin != null && flyingPin != null) ? flyingPin.transform : null;
+            DrawThread(flyingThreadLine, flyingTarget);
+        }
 
-            if (lineTarget != null)
-            {
-                threadLine.SetPosition(0, VisualCenter);
-                threadLine.SetPosition(1, lineTarget.position);
-            }
+        private void DrawThread(LineRenderer line, Transform target)
+        {
+            if (line == null) return;
+
+            line.enabled = target != null;
+            if (target == null) return;
+
+            line.SetPosition(0, VisualCenter);
+            line.SetPosition(1, target.position);
         }
 
         private void UpdateAimVisuals()

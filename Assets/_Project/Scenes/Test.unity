@@ -1221,7 +1221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Player.SwingAbility
   pinPrefab: {fileID: 3937653227472329826, guid: d2dedd5f9b1b679498942535e2cc4b14, type: 3}
-  throwThreadCost: 10
+  maxThrowCost: 10
+  minThrowCost: 2.5
   drainPerSecond: 5
   maxDragDistance: 1.5
   minPowerToThrow: 0.1
@@ -1431,7 +1432,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 238.4089, y: 34.628357}
+  m_Size: {x: 249.90457, y: 34.628357}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1445,7 +1446,7 @@ Transform:
   m_GameObject: {fileID: 514767056}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 110.0419, y: -0.65, z: 0}
+  m_LocalPosition: {x: 104.2941, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
