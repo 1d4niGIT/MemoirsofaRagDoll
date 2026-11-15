@@ -21,7 +21,7 @@ cobra color y forma. El sueño intentará engañarlo con salidas falsas, y su re
 | Lanzar el alfiler | Mantener clic izquierdo, arrastrar en dirección contraria al destino y soltar | Funciona como una honda: la dirección es opuesta al arrastre y la fuerza depende de su distancia. Un clic corto no lanza nada. |
 | Balancearse | `A` / `D` colgado del hilo | Mino se columpia del alfiler clavado en una plataforma blanda. |
 | Recoger y soltar el hilo | `W` / `S` colgado | `W` acorta el hilo para subir; `S` lo suelta para bajar. |
-| Soltar el hilo | Clic o `Espacio` | Se suelta del alfiler y sigue su trayectoria. |
+| Soltar el hilo | `Espacio` | Se suelta del alfiler y sigue su trayectoria. |
 
 **El hilo es un recurso limitado.** Cada alfiler cuesta hilo, y colgarse en el aire lo gasta poco a poco. Se recupera tomando ovillos de lana o madejas de pabilo. Si Mino se queda sin hilo en pleno balanceo, se queda flaquito, sin relleno, y muere.
 
