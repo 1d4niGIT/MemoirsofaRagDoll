@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b613bf791f43884f8f74e42e601bfef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Player.PinProjectile
-  maxLifetime: 1
+  gravityScale: 1
+  maxLifetime: 2.5
   softLayers:
     serializedVersion: 2
     m_Bits: 256
