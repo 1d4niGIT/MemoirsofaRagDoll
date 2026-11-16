@@ -7,11 +7,11 @@ namespace RagDoll.Player
     /// <summary>
     /// Traduce el estado del jugador a parametros del Animator. Va en el objeto raiz de Mino
     /// (el Animator puede estar en el hijo "Visual"). No decide nada del gameplay: solo LEE
-    /// el estado y lo muestra (S de SOLID). Por eso las animaciones se pueden cambiar o ampliar
+    /// el estado y lo muestra. Por eso las animaciones se pueden cambiar o ampliar
     /// sin tocar fisicas, vida ni habilidades.
     ///
-    /// Es tolerante: si un parametro todavia no existe en tu Animator Controller, lo ignora.
-    /// Puedes ir creando parametros y estados poco a poco.
+    /// Es tolerante: si un parametro todavia no existe en el Animator Controller, lo ignora.
+    /// Se puede ir creando parametros y estados poco a poco.
     ///
     /// Parametros que reconoce (nombre exacto, distingue mayusculas):
     ///   Speed (float)         velocidad horizontal, siempre positiva
