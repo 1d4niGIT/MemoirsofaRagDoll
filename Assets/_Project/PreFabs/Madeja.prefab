@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 903194528479676712, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3737624
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 903194528479676712, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3737624
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 903194528479676712, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3737624
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 903194528479676712, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68,10 +68,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Madeja
       objectReference: {fileID: 0}
+    - target: {fileID: 5408164470212333310, guid: 2527540495ab1da438569206f6c41504, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408164470212333310, guid: 2527540495ab1da438569206f6c41504, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408164470212333310, guid: 2527540495ab1da438569206f6c41504, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5489412728537236433, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7804471467885852239, guid: a71cf1d298924f544b26acf6e7c5a843, type: 3}
+      objectReference: {fileID: 5735623277822448591, guid: 6d27f7d9db55b674592e74397c51c225, type: 3}
     - target: {fileID: 5489412728537236433, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_SortingOrder
       value: 110

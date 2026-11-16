@@ -28,6 +28,15 @@ namespace RagDoll.Hazards
             target.TakeDamage(damage);
         }
 
+        /// <summary>
+        /// Gancho ampliado: ademas recibe el collider que toco (sirve para saber DONDE toco,
+        /// ej. para empujar). Por defecto llama al gancho simple, asi las hijas anteriores no cambian.
+        /// </summary>
+        protected virtual void OnHit(IDamageable target, Collider2D other)
+        {
+            OnHit(target);
+        }
+
         // Se ejecuta al agregar el componente en el editor: deja el collider como trigger.
         private void Reset()
         {
@@ -46,7 +55,7 @@ namespace RagDoll.Hazards
             IDamageable target = other.GetComponentInParent<IDamageable>();
             if (target == null || !target.IsAlive) return;
 
-            OnHit(target);
+            OnHit(target, other);
         }
     }
 }

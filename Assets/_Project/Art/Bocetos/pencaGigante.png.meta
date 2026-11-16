@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e039cf4928cab0148a640cddef0e55ac
+guid: 1afacdfe055d03a4c80d3fb4f6b27ca4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8891627207705654977
-    second: kk2_0
+      213: 3189111959776837113
+    second: pencaD1 (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kk2_0
+      name: pencaD1 (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 62
-        height: 89
+        x: 10
+        y: 8
+        width: 568
+        height: 774
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1c67e76e5d7656b70800000000000000
-      internalID: 8891627207705654977
+      spriteID: 9fdb2774e60024c20800000000000000
+      internalID: 3189111959776837113
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kk2_0: 8891627207705654977
+      pencaD1 (1)_0: 3189111959776837113
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
