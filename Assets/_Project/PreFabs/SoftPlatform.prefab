@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.94, y: 3.39, z: 0}
-  m_LocalScale: {x: 0.53154, y: 0.53154, z: 0.53154}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6952008589174844682}
   m_Father: {fileID: 0}
@@ -79,13 +79,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.1480424, y: 0.9397746}
-      - {x: -2.2091014, y: 0.04134801}
-      - {x: -1.3372593, y: -0.9160852}
-      - {x: 0.11267418, y: -1.2038286}
-      - {x: 1.3983226, y: -0.8386422}
-      - {x: 2.1228023, y: -0.008701161}
-      - {x: 2.1288013, y: 0.9313477}
+    - - {x: -0.94569564, y: 0.6163958}
+      - {x: -1.011997, y: 0.040711194}
+      - {x: -0.8016796, y: -0.28647918}
+      - {x: -0.32411152, y: -0.52530193}
+      - {x: 0.23901892, y: -0.53225833}
+      - {x: 0.92966795, y: -0.065562084}
+      - {x: 0.81606674, y: 0.60431564}
   m_UseDelaunayMesh: 1
 --- !u!1 &6427339815494084986
 GameObject:
@@ -112,13 +112,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427339815494084986}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.0175807, w: 0.99984545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2709849589022490670}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 2.015}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5422224827199903972
 SpriteRenderer:
   serializedVersion: 2
@@ -168,8 +168,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 6443214245978592265, guid: 90b4b75896183c94eb30a768f865fcef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 321563479764173368, guid: b7a5672db1c03ac4cb99c538aa56d283, type: 3}
+  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
