@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01798343f99b558459cd622c83c28ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Hazards.PencaHazard
-  damage: 1
+  damage: 10
   hitInterval: 1
   knockbackSpeed: 7
   knockbackDuration: 0.2

@@ -18,10 +18,10 @@ namespace RagDoll.Player
     ///      se suelta); si falla, sigue colgado del anterior.
     ///   6) Espacio suelta el hilo. Si el hilo llega a 0 en pleno balanceo, Mino muere.
     ///
-    /// Depende de interfaces (IAimInput, IKillable), no de clases concretas (D de SOLID).
+    /// Depende de interfaces (IAimInput, IKillable), no de clases concretas.
     /// </summary>
     [RequireComponent(typeof(PlayerController), typeof(ThreadSupply))]
-    public class SwingAbility : AbilityBase
+    public class SwingAbility : AbilityBase, ISwingState
     {
         [Header("Hilo")]
         [SerializeField] private PinProjectile pinPrefab;
@@ -169,11 +169,7 @@ namespace RagDoll.Player
             Body.AddForce(Vector2.right * horizontalInput * swingForce);
             thread.Drain(drainPerSecond * Time.fixedDeltaTime);
 
-            if (thread.IsEmpty)
-            {
-                Detach();
-                killable?.Kill();
-            }
+            // Sin hilo ya no se muere de golpe: el relleno baja solo (StarvationDrain).
         }
 
         public override void Cancel()

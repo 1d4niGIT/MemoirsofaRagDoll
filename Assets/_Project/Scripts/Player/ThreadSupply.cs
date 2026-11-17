@@ -9,7 +9,7 @@ namespace RagDoll.Player
     /// Solo gestiona la cantidad y publica OnThreadChanged: no sabe quien lo gasta
     /// ni quien lo muestra (S de SOLID).
     /// </summary>
-    public class ThreadSupply : MonoBehaviour
+    public class ThreadSupply : MonoBehaviour, IThreadDrainable
     {
         [SerializeField] private float maxThread = 100f;
         [SerializeField] private float startThread = 100f;
