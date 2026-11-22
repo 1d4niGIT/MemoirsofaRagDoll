@@ -23,6 +23,9 @@ namespace RagDoll.Core
         /// <summary>Un golpe le quito RELLENO a Mino (ya no tenia hilo). Parametro: cantidad.</summary>
         public static event Action<int> OnStuffingHit;
 
+        /// <summary>Mino pierde relleno poco a poco por no tener hilo. Se publica cada cierto intervalo (para el VFX), no en cada punto.</summary>
+        public static event Action OnStuffingLeaked;
+
         /// <summary>Cambio la vida. Parametros: vida actual, vida maxima.</summary>
         public static event Action<int, int> OnHealthChanged;
 
@@ -64,6 +67,7 @@ namespace RagDoll.Core
 
         // ---------- Metodos para publicar ----------
         public static void RaisePlayerDamaged(int amount) => OnPlayerDamaged?.Invoke(amount);
+        public static void RaiseStuffingLeaked() => OnStuffingLeaked?.Invoke();
         public static void RaiseThreadHit(int amount) => OnThreadHit?.Invoke(amount);
         public static void RaiseStuffingHit(int amount) => OnStuffingHit?.Invoke(amount);
         public static void RaiseHealthChanged(int current, int max) => OnHealthChanged?.Invoke(current, max);
@@ -90,6 +94,7 @@ namespace RagDoll.Core
         private static void ResetAll()
         {
             OnPlayerDamaged = null;
+            OnStuffingLeaked = null;
             OnThreadHit = null;
             OnStuffingHit = null;
             OnHealthChanged = null;
