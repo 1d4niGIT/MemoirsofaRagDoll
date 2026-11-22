@@ -42,5 +42,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background_Far
+    uniqueID: 529864855
+    locked: 0
+  - name: Background_Mid
+    uniqueID: 1304651155
+    locked: 0
+  - name: Decor_Back
+    uniqueID: 908306791
+    locked: 0
+  - name: Platforms
+    uniqueID: 815258145
+    locked: 0
+  - name: Hazards
+    uniqueID: 4000916257
+    locked: 0
+  - name: Player
+    uniqueID: 2821218471
+    locked: 0
+  - name: Decor_Front
+    uniqueID: 2250664453
+    locked: 0
+  - name: VFX
+    uniqueID: 3898826865
+    locked: 0
   m_RenderingLayers:
   - Default
