@@ -69,6 +69,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6096957647869302403, guid: 0a46f35bc99fcd548b4d2bf56a5bbfeb, type: 3}
+      propertyPath: snagLines
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096957647869302403, guid: 0a46f35bc99fcd548b4d2bf56a5bbfeb, type: 3}
       propertyPath: hitInterval
       value: 1
       objectReference: {fileID: 0}

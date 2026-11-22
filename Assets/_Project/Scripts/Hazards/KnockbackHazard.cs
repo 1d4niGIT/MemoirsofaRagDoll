@@ -8,7 +8,7 @@ namespace RagDoll.Hazards
     /// en direccion contraria al contacto. Base compartida por la penca, la aguja y lo que venga
     /// (cactus, pinzas...): el empujon se escribe una sola vez.
     ///
-    /// Las hijas agregan efectos extra sobrescribiendo OnHitExtra (O de SOLID).
+    /// Las hijas agregan efectos extra sobrescribiendo OnHitExtra.
     ///
     /// Collider: uno SOLIDO (barrera) y uno TRIGGER un poco mas grande (deteccion del dano),
     /// los dos en el mismo objeto.
@@ -17,6 +17,9 @@ namespace RagDoll.Hazards
     {
         [Header("Golpe repetido")]
         [SerializeField] private float hitInterval = 1f;
+
+        [Header("Hilo que se suelta (VFX)")]
+        [SerializeField] private int snagLines = 2;   // lineas de hilo que salen de Mino al golpearlo
 
         [Header("Empujon")]
         [SerializeField] private float knockbackSpeed = 7f;
@@ -43,6 +46,7 @@ namespace RagDoll.Hazards
         {
             nextHitTime = Time.time + hitInterval;
             base.OnHit(target, other);      // dano normal
+            GameEvents.RaiseSnagged(other, ContactPoint(other), snagLines);   // aviso para el VFX
             OnHitExtra(other);              // efectos propios de la hija
 
             IKnockbackable pushable = other.GetComponentInParent<IKnockbackable>();
@@ -52,6 +56,13 @@ namespace RagDoll.Hazards
 
         /// <summary>Gancho: efecto extra al golpear (ej. gastar hilo). Por defecto nada.</summary>
         protected virtual void OnHitExtra(Collider2D other) { }
+
+        /// <summary>Punto de esta amenaza mas cercano al objetivo: donde "engancho".</summary>
+        private Vector2 ContactPoint(Collider2D other)
+        {
+            Collider2D reference = damageTrigger != null ? damageTrigger : GetComponent<Collider2D>();
+            return reference.ClosestPoint(other.bounds.center);
+        }
 
         /// <summary>Desde el punto de la amenaza mas cercano al objetivo, hacia el objetivo.</summary>
         private Vector2 PushDirection(Collider2D other)

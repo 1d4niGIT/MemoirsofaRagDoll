@@ -7,7 +7,7 @@ namespace RagDoll.Player
     /// Vida de Mino = su cantidad de RELLENO (0 a 100). Implementa IDamageable: las amenazas solo
     /// conocen esa interfaz. Tambien implementa IKillable para morir de golpe.
     ///
-    /// Regla del hilo: mientras Mino tenga hilo, los golpes le gastan
+    /// Regla del hilo (como el oxigeno de Minecraft): mientras Mino tenga hilo, los golpes le gastan
     /// HILO y su relleno no se toca. Solo cuando el hilo esta en 0 los golpes bajan el relleno.
     /// Sin hilo, ademas, el relleno se va perdiendo solo (ver StarvationDrain).
     /// Esta clase NO sabe nada de barras de vida, sonidos ni animaciones:
@@ -47,6 +47,7 @@ namespace RagDoll.Player
             {
                 thread.Drain(amount);
                 GameEvents.RaisePlayerDamaged(amount);
+                GameEvents.RaiseThreadHit(amount);
                 invulnerableUntil = Time.time + invulnerabilityTime;
                 return;
             }
@@ -54,6 +55,7 @@ namespace RagDoll.Player
             CurrentHealth = Mathf.Max(0, CurrentHealth - amount);
 
             GameEvents.RaisePlayerDamaged(amount);
+            GameEvents.RaiseStuffingHit(amount);
             GameEvents.RaiseHealthChanged(CurrentHealth, maxHealth);
 
             if (CurrentHealth == 0)

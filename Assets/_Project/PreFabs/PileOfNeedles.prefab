@@ -566,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Hazards.NeedleHazard
   damage: 20
   hitInterval: 1
+  snagLines: 4
   knockbackSpeed: 7
   knockbackDuration: 0.2
   upwardBias: 0.4
