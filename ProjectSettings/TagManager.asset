@@ -51,11 +51,17 @@ TagManager:
   - name: Decor_Back
     uniqueID: 908306791
     locked: 0
+  - name: Floor
+    uniqueID: 737683317
+    locked: 0
   - name: Platforms
     uniqueID: 815258145
     locked: 0
   - name: Hazards
     uniqueID: 4000916257
+    locked: 0
+  - name: Hideables
+    uniqueID: 2412334299
     locked: 0
   - name: Player
     uniqueID: 2821218471

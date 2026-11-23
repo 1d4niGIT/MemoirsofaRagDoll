@@ -87,7 +87,11 @@ namespace RagDoll.Player
         {
             if (!IsAlive) return;
 
+            int lost = CurrentHealth;
             CurrentHealth = 0;
+
+            // Al morir de golpe tambien sale el relleno (mismo VFX que al perderlo por un golpe).
+            GameEvents.RaiseStuffingHit(lost);
             GameEvents.RaiseHealthChanged(CurrentHealth, maxHealth);
             GameEvents.RaisePlayerDied();
         }

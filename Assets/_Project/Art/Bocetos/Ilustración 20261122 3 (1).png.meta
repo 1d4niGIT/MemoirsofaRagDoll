@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7047f138e6ea5904a912310e5bf2ecbe
+guid: 2a3e185be9cb97e408ab89c6cf589444
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -46261584527688381
-    second: "Ilustraci\xF3n 20261120 2 (3)_0"
+      213: 2106738764066653400
+    second: "Ilustraci\xF3n 20261122 3 (1)_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 800
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Ilustraci\xF3n 20261120 2 (3)_0"
+      name: "Ilustraci\xF3n 20261122 3 (1)_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 2151
+        width: 3253
+        height: 1977
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34dfa7f7555ab5ff0800000000000000
-      internalID: -46261584527688381
+      spriteID: 8d40db27eb3ac3d10800000000000000
+      internalID: 2106738764066653400
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Ilustraci\xF3n 20261120 2 (3)_0": -46261584527688381
+      "Ilustraci\xF3n 20261122 3 (1)_0": 2106738764066653400
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
