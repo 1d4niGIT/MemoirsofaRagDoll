@@ -84,7 +84,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3451413529338861617, guid: de3e42bfb3a1efb4b960f9e401c311f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.17125, y: 0.825}
@@ -132,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085172800508447850}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.04421141, w: 0.9990222}
+  m_LocalRotation: {x: 0, y: 0, z: 0.044212237, w: 0.99902225}
   m_LocalPosition: {x: 23.92, y: -2.1620002, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1

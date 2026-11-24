@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8271311707788717083}
   - component: {fileID: 6243811800970326522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RangeIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -396140431
-  m_SortingLayer: 10
-  m_SortingOrder: 98
+  m_SortingLayerID: -1473748825
+  m_SortingLayer: 8
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.48384658, g: 0.60199106, b: 0.7830189, a: 0.043137256}
@@ -120,7 +120,8 @@ GameObject:
   - component: {fileID: 5700881646627922621}
   - component: {fileID: 1658536908276593866}
   - component: {fileID: 7427362366029403668}
-  m_Layer: 0
+  - component: {fileID: 8411733429573321742}
+  m_Layer: 9
   m_Name: Mino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +175,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &3048295412830901453
 CapsuleCollider2D:
@@ -499,6 +500,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e11bdf5da949a46a4b1526ffe697ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Player.PlayerBounce
+--- !u!114 &8411733429573321742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965480221305876757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a5160e0397a08429b317758106ab18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Player.AimSlowMotion
+  slowTimeScale: 0.3
+  enterSpeed: 8
+  onlyWhileSwinging: 1
 --- !u!1 &2704568901922684581
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6427877866691991599}
   - component: {fileID: 7373615238352753607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Feedback_StuffingHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,7 +850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3360370341335394803}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +884,7 @@ GameObject:
   - component: {fileID: 773207772830303350}
   - component: {fileID: 1716649256863307613}
   - component: {fileID: 9087837916445090495}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -937,7 +953,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1473748825
   m_SortingLayer: 8
-  m_SortingOrder: 100
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1092562296659240847, guid: fef71d7ea7e5c1c438eea7441a848b54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -996,7 +1012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866301070711869009}
   - component: {fileID: 8897731163324985236}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ThreadLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1063,9 +1079,9 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -396140431
-  m_SortingLayer: 10
-  m_SortingOrder: 100
+  m_SortingLayerID: -1473748825
+  m_SortingLayer: 8
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -1138,7 +1154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541370600263812964}
   - component: {fileID: 2937446557321202930}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Feedback_StuffingLeak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1464,7 +1480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6938966611542781644}
   - component: {fileID: 1652348993257030672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AimLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,9 +1547,9 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -396140431
-  m_SortingLayer: 10
-  m_SortingOrder: 99
+  m_SortingLayerID: -1473748825
+  m_SortingLayer: 8
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
