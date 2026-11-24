@@ -63,14 +63,17 @@ TagManager:
   - name: Hideables
     uniqueID: 2412334299
     locked: 0
+  - name: Pickups
+    uniqueID: 1873806973
+    locked: 0
   - name: Player
     uniqueID: 2821218471
     locked: 0
-  - name: Decor_Front
-    uniqueID: 2250664453
-    locked: 0
   - name: VFX
     uniqueID: 3898826865
+    locked: 0
+  - name: Decor_Front
+    uniqueID: 2250664453
     locked: 0
   m_RenderingLayers:
   - Default
