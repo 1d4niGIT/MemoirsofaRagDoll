@@ -438,6 +438,13 @@ namespace RagDoll.Player
 
         private void UpdateAimVisuals()
         {
+            // Con camara lenta la fisica avanza a saltos; el collider (BodyCenter) se queda quieto entre
+            // pasos mientras el dibujo de Mino se interpola. Se recalcula el apuntado desde la posicion
+            // que se VE (VisualCenter) para que la linea no tiemble. Se hace aqui, en LateUpdate,
+            // para usar la posicion ya interpolada de este mismo frame.
+            if (isAiming)
+                slingshot.UpdateAim(VisualCenter, PointerWorldPosition());
+
             if (rangeIndicator != null)
             {
                 rangeIndicator.gameObject.SetActive(isAiming);
@@ -485,7 +492,7 @@ namespace RagDoll.Player
                 return;
             }
 
-            Vector2 origin = BodyCenter;
+            Vector2 origin = VisualCenter;   // misma referencia que la linea de arrastre, sin temblor
             Vector2 velocity = slingshot.LaunchDirection * LaunchSpeedFor(power);
             trajectoryLine.enabled = true;
 

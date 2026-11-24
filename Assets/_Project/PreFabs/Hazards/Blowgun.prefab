@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Hazards.ProjectileLauncher
   projectilePrefab: {fileID: 6563937052322555405, guid: 49362ccac7e3a3246bf7231949edba70, type: 3}
-  muzzle: {fileID: 0}
+  muzzle: {fileID: 5815544015891419213}
   minInterval: 0.1
   maxInterval: 0.5
   initialDelay: 0

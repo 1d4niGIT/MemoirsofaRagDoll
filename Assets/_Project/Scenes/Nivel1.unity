@@ -751,11 +751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.92
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.74
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1032,11 +1032,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab7c1e874d2720b4c9f632b10f73135c, type: 3}
---- !u!4 &1887874038 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5815544015891419213, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-  m_PrefabInstance: {fileID: 7651713181749640212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1890780604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2171,38 +2166,6 @@ PrefabInstance:
     - target: {fileID: 2892972921491526215, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: muzzle
-      value: 
-      objectReference: {fileID: 1887874038}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: launchSpeed
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: maxInterval
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: minInterval
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: spawnSize.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: spawnSize.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: spawnOffset.y
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801787014246240898, guid: 57ca70bfa2f61f443872813d2b1b219a, type: 3}
-      propertyPath: maxProjectiles
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
