@@ -532,7 +532,7 @@ MonoBehaviour:
     m_Bits: 512
   sagTrigger: Sag
   minImpactSpeed: 14
-  logImpactSpeed: 1
+  logImpactSpeed: 0
 --- !u!1 &8239188096343970708
 GameObject:
   m_ObjectHideFlags: 0
