@@ -5,27 +5,29 @@ namespace RagDoll.Player
 {
     /// <summary>
     /// Salto. Lee el input en Update (HandleInput) y aplica la fisica en FixedUpdate (FixedTick).
-    /// Incluye "coyote time": un margen corto para saltar justo despues de dejar una plataforma,
-    /// que hace el control mucho mas amable.
     ///
-    /// Salto variable (como Hollow Knight): el salto sale con la fuerza completa, pero si sueltas
-    /// el boton mientras Mino todavia sube, la subida se corta. Un toque rapido da un saltito y
-    /// mantener el boton da la altura normal; soltar a mitad da una altura intermedia.
+    /// Mejoras de sensacion:
+    /// - Coyote time: margen corto para saltar justo despues de dejar una plataforma.
+    /// - Jump buffer: si aprietas saltar un poquito ANTES de aterrizar, el salto sale al tocar suelo.
+    /// - Salto variable suave: al soltar el boton mientras sube, en vez de frenar de golpe la
+    ///   velocidad (se siente tosco) se aplica gravedad extra, asi la subida se curva y se frena natural.
+    /// - Salto minimo: un toque rapido siempre da un saltito con altura util, no un brinco ridiculo.
     /// </summary>
     public class JumpAbility : AbilityBase
     {
         [SerializeField] private float jumpForce = 12f;
         [SerializeField] private float coyoteTime = 0.1f;
+        [SerializeField] private float jumpBufferTime = 0.12f;       // margen para apretar antes de aterrizar
 
         [Header("Salto variable")]
-        [SerializeField, Range(0f, 1f)] private float jumpCutMultiplier = 0.35f; // 0 = corta en seco, 1 = sin corte
-        [SerializeField] private float minJumpTime = 0.06f;                      // tiempo minimo antes de poder cortar
+        [SerializeField] private float minJumpTime = 0.1f;           // tiempo que sube SI o SI antes de poder frenar
+        [SerializeField] private float releaseGravityMultiplier = 2.5f; // gravedad extra al soltar mientras sube (1 = sin efecto)
 
         private bool jumpRequested;
         private float lastGroundedTime = -999f;
+        private float lastJumpPressedTime = -999f;
 
         private bool jumpHeld;
-        private bool jumpCutDone;
         private float jumpStartTime;
         private PlayerController controller;
 
@@ -39,6 +41,9 @@ namespace RagDoll.Player
         {
             jumpHeld = input.JumpHeld;
 
+            if (input.JumpPressed)
+                lastJumpPressedTime = Time.time;
+
             if (Ground.IsGrounded)
             {
                 lastGroundedTime = Time.time;
@@ -49,8 +54,9 @@ namespace RagDoll.Player
             }
 
             bool canJump = Time.time - lastGroundedTime <= coyoteTime;
+            bool wantsJump = Time.time - lastJumpPressedTime <= jumpBufferTime;
 
-            if (input.JumpPressed && canJump)
+            if (wantsJump && canJump)
                 jumpRequested = true;
         }
 
@@ -62,13 +68,14 @@ namespace RagDoll.Player
                 return;
             }
 
-            TryCutJump();
+            ApplyVariableJump();
         }
 
         private void StartJump()
         {
             jumpRequested = false;
-            lastGroundedTime = -999f; // evita un segundo salto aprovechando el coyote time
+            lastGroundedTime = -999f;     // evita un segundo salto aprovechando el coyote time
+            lastJumpPressedTime = -999f;  // consume el buffer
 
             // Unity 6: Rigidbody2D.velocity pasa a llamarse linearVelocity.
             Vector2 velocity = Body.linearVelocity;
@@ -76,30 +83,28 @@ namespace RagDoll.Player
             Body.linearVelocity = velocity;
 
             jumpStartTime = Time.time;
-            jumpCutDone = false;
             IsActive = true;
         }
 
         /// <summary>
-        /// Si el boton ya se solto y Mino sigue subiendo, frena la subida una sola vez.
-        /// Cuanto mas tarde se suelte, mas alto habra llegado antes del corte.
+        /// Si soltaste el boton y Mino aun sube, suma gravedad extra: la subida se frena de forma
+        /// gradual en vez de cortarse en seco. Cuanto mas tarde sueltas, mas alto llega.
         /// </summary>
-        private void TryCutJump()
+        private void ApplyVariableJump()
         {
-            if (!IsActive || jumpCutDone || jumpHeld) return;
+            if (!IsActive || jumpHeld) return;
             if (Time.time - jumpStartTime < minJumpTime) return;
-
-            jumpCutDone = true;
 
             // Si el balanceo con hilo tomo el control, no se toca su velocidad.
             if (controller != null && controller.ExternalMovement) return;
 
             Vector2 velocity = Body.linearVelocity;
-            if (velocity.y > 0f)
-            {
-                velocity.y *= jumpCutMultiplier;
-                Body.linearVelocity = velocity;
-            }
+            if (velocity.y <= 0f) return;
+
+            // Gravedad extra = (multiplicador - 1) veces la gravedad normal de Mino.
+            float extra = Physics2D.gravity.y * Body.gravityScale * (releaseGravityMultiplier - 1f) * Time.fixedDeltaTime;
+            velocity.y += extra; // extra es negativo
+            Body.linearVelocity = velocity;
         }
 
         public override void Cancel()

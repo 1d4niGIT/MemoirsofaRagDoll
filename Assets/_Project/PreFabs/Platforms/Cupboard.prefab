@@ -101,6 +101,8 @@ GameObject:
   m_Component:
   - component: {fileID: 186797013468200897}
   - component: {fileID: 5766360528187520362}
+  - component: {fileID: 7640358384901731258}
+  - component: {fileID: 990707602445749172}
   m_Layer: 6
   m_Name: Cupboard
   m_TagString: Untagged
@@ -175,3 +177,45 @@ PolygonCollider2D:
       - {x: 0.018304255, y: -0.6657321}
       - {x: 0.6705697, y: -0.17564076}
   m_UseDelaunayMesh: 1
+--- !u!50 &7640358384901731258
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135778891256832258}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &990707602445749172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135778891256832258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c834646590bfa942a6ee1d7f86d52e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Levels.FloatingPlatform
+  amplitude: 0.08
+  speed: 0.3
+  randomPhase: 1
