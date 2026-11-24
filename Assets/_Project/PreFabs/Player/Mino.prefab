@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 3645951763337912946}
   - component: {fileID: 773207772830303350}
   - component: {fileID: 1716649256863307613}
+  - component: {fileID: 9087837916445090495}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -970,6 +971,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9087837916445090495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881930420286653397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac842bbb52edf4a4080de28fdc51ff82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Player.HitShake
+  amplitude: 0.12
+  duration: 0.25
+  swings: 1.5
 --- !u!1 &6437100770415470381
 GameObject:
   m_ObjectHideFlags: 0
