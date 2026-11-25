@@ -55,8 +55,7 @@ namespace RagDoll.Hazards
                 else if (solidCollider == null) solidCollider = c;
             }
 
-            noFilter = new ContactFilter2D();
-            noFilter.NoFilter();
+            noFilter = ContactFilter2D.noFilter;   // propiedad estatica (NoFilter() quedo obsoleto en Unity 6)
 
             if (damageTrigger == null)
                 Debug.LogWarning(name + " necesita un Collider2D con Is Trigger (dano) ademas del solido.", this);

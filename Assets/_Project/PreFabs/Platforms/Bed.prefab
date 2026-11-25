@@ -92,7 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f8b6b26b28bbed48b54bd9422f09bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Hazards.BouncySurface
-  bounceSpeed: 12
+  restitution: 0.85
+  minBounceSpeed: 4
+  maxBounceSpeed: 14
   minInterval: 0.1
   topTolerance: 0.15
 --- !u!1 &8743992826683308956

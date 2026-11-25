@@ -4,26 +4,35 @@ using RagDoll.Core;
 namespace RagDoll.Hazards
 {
     /// <summary>
-    /// Superficie elastica (cama, trampolin). Cada vez que algo que pueda rebotar (IBounceable)
-    /// cae SOBRE ella, lo lanza hacia arriba. Mientras siga en contacto vuelve a rebotar,
-    /// y deja de hacerlo cuando sale de la superficie.
+    /// Superficie elastica (cama, trampolin). Cuando algo que pueda rebotar (IBounceable) cae SOBRE ella,
+    /// lo lanza hacia arriba con una fraccion de la velocidad con la que llego ("restitution").
+    /// Como cada rebote devuelve menos que el anterior, la altura baja sola hasta que el rebote
+    /// seria menor que "minBounceSpeed": ahi ya no rebota y Mino se queda de pie sobre la cama.
+    /// Si salta otra vez, vuelve a tomar impulso y rebota de nuevo.
+    ///
+    /// Una caida en picada (stomp) llega mas rapido, asi que rebota mas alto (hasta maxBounceSpeed).
     ///
     /// Requiere un Collider2D SOLIDO (no trigger) en el mismo objeto.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class BouncySurface : MonoBehaviour
     {
-        [SerializeField] private float bounceSpeed = 12f;     // velocidad hacia arriba del rebote
-        [SerializeField] private float minInterval = 0.1f;    // evita rebotar dos veces seguidas en el mismo choque
-        [SerializeField] private float topTolerance = 0.15f;  // margen para decidir que cayo "desde arriba"
+        [Header("Elasticidad")]
+        [SerializeField, Range(0f, 1f)] private float restitution = 0.75f;  // 1 = infinito, 0.5 = se apaga rapido
+        [SerializeField] private float minBounceSpeed = 4f;    // por debajo de esta velocidad ya no rebota
+        [SerializeField] private float maxBounceSpeed = 14f;   // tope (ej. para la caida en picada)
+
+        [Header("Deteccion")]
+        [SerializeField] private float minInterval = 0.1f;     // evita rebotar dos veces en el mismo choque
+        [SerializeField] private float topTolerance = 0.3f;    // margen para decidir que cayo "desde arriba"
 
         private Collider2D surface;
         private float nextBounceTime;
 
         private void Awake() => surface = GetComponent<Collider2D>();
 
+        // Solo al CHOCAR: el rebote depende de la velocidad del impacto, no de seguir en contacto.
         private void OnCollisionEnter2D(Collision2D collision) => TryBounce(collision);
-        private void OnCollisionStay2D(Collision2D collision) => TryBounce(collision);
 
         private void TryBounce(Collision2D collision)
         {
@@ -36,8 +45,15 @@ namespace RagDoll.Hazards
             IBounceable bounceable = collision.collider.GetComponentInParent<IBounceable>();
             if (bounceable == null) return;
 
+            // Velocidad vertical con la que llego (antes de que la fisica la frene).
+            float impactSpeed = Mathf.Abs(collision.relativeVelocity.y);
+            float outSpeed = Mathf.Min(impactSpeed * restitution, maxBounceSpeed);
+
+            // Ya casi no tiene energia: no rebota y se queda de pie.
+            if (outSpeed < minBounceSpeed) return;
+
             nextBounceTime = Time.time + minInterval;
-            bounceable.Bounce(bounceSpeed);
+            bounceable.Bounce(outSpeed);
         }
     }
 }
