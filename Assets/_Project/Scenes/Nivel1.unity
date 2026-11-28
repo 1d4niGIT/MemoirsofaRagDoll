@@ -857,7 +857,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3566815840944700357, guid: 2ec90c3cee9fcc54d879632ea23cba99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77
+      value: 78.71
       objectReference: {fileID: 0}
     - target: {fileID: 3566815840944700357, guid: 2ec90c3cee9fcc54d879632ea23cba99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1314,15 +1314,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   onlyWhileCrouching: 1
+  maxActive: 8
   minInterval: 0.15
   maxInterval: 0.4
-  maxActive: 8
+  ambientEnabled: 1
+  ambientMinInterval: 0.2
+  ambientMaxInterval: 0.6
   spawnHeightOffset: 7
-  aimAtPlayerChance: 0.7
   aimJitter: 1.5
   leadTarget: 1
   leadAmount: 1
-  gravityRange: {x: 1, y: 1.8}
+  gravityRange: {x: 0.8, y: 1.2}
   maxSpin: 90
   debugLog: 0
 --- !u!61 &1623664869
