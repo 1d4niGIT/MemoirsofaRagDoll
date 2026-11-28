@@ -38,13 +38,19 @@ namespace RagDoll.Hazards
 
         [Header("Cuando caen")]
         [SerializeField] private bool onlyWhileCrouching = true;
-        [SerializeField] private float minInterval = 0.3f;
+        [SerializeField] private int maxActive = 14;                     // maximo en pantalla a la vez (suma de los dos tipos)
+
+        [Header("Pencas dirigidas a Mino")]
+        [SerializeField] private float minInterval = 0.3f;               // segundos entre una y otra
         [SerializeField] private float maxInterval = 0.8f;
-        [SerializeField] private int maxActive = 8;                      // maximo en pantalla a la vez
+
+        [Header("Pencas por toda la zona")]
+        [SerializeField] private bool ambientEnabled = true;
+        [SerializeField] private float ambientMinInterval = 0.2f;        // caen en un punto al azar de todo el ancho de la zona
+        [SerializeField] private float ambientMaxInterval = 0.6f;
 
         [Header("Donde aparecen")]
         [SerializeField] private float spawnHeightOffset = 1f;           // por encima del borde superior de la zona
-        [SerializeField, Range(0f, 1f)] private float aimAtPlayerChance = 0.5f;  // prob. de caer cerca de Mino
         [SerializeField] private float aimJitter = 1.5f;                 // dispersion alrededor de Mino
         [SerializeField] private bool leadTarget = true;                 // apunta a donde ESTARA Mino cuando la penca llegue
         [SerializeField, Range(0f, 1.5f)] private float leadAmount = 1f; // 1 = adelanto completo, 0 = apunta a donde esta ahora
@@ -60,7 +66,8 @@ namespace RagDoll.Hazards
         private ICrouchState target;
         private Transform targetTransform;
         private Rigidbody2D targetBody;
-        private float nextSpawn;
+        private float nextAimedSpawn;
+        private float nextAmbientSpawn;
         private int active;
 
         private void Awake()
@@ -81,7 +88,8 @@ namespace RagDoll.Hazards
             target = crouch;
             targetBody = other.attachedRigidbody;
             targetTransform = targetBody != null ? targetBody.transform : other.transform;
-            nextSpawn = Time.time + minInterval;
+            nextAimedSpawn = Time.time + minInterval;
+            nextAmbientSpawn = Time.time + ambientMinInterval;
 
             if (debugLog) Debug.Log(name + ": Mino entro a la zona.", this);
         }
@@ -100,13 +108,23 @@ namespace RagDoll.Hazards
             if (targetTransform == null) { ClearTarget(); return; }
 
             if (onlyWhileCrouching && !target.IsCrouching) return;
-            if (active >= maxActive || Time.time < nextSpawn) return;
 
-            nextSpawn = Time.time + Random.Range(minInterval, maxInterval);
-            Spawn();
+            // Dos "grifos" independientes: uno dirigido a Mino y otro repartido por toda la zona.
+            if (active < maxActive && Time.time >= nextAimedSpawn)
+            {
+                nextAimedSpawn = Time.time + Random.Range(minInterval, maxInterval);
+                Spawn(true);
+            }
+
+            if (ambientEnabled && active < maxActive && Time.time >= nextAmbientSpawn)
+            {
+                nextAmbientSpawn = Time.time + Random.Range(ambientMinInterval, ambientMaxInterval);
+                Spawn(false);
+            }
         }
 
-        private void Spawn()
+        /// <param name="aimed">true = cae cerca de Mino (con adelanto); false = en cualquier punto de la zona.</param>
+        private void Spawn(bool aimed)
         {
             if (pencaPrefab == null || sprites == null || sprites.Length == 0) return;
 
@@ -116,7 +134,7 @@ namespace RagDoll.Hazards
             float spawnY = b.max.y + spawnHeightOffset;
 
             float x;
-            if (Random.value < aimAtPlayerChance)
+            if (aimed)
             {
                 x = targetTransform.position.x;
 

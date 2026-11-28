@@ -1093,11 +1093,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.62
+      value: 48.54
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.24
+      value: 25.3
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1300,29 +1300,29 @@ MonoBehaviour:
   depthLayers:
   - sortingOrder: 7
     damages: 1
-    scale: 1.5
-    tint: {r: 1, g: 1, b: 1, a: 1}
+    scale: 1.7
+    tint: {r: 0.990566, g: 0.9409209, b: 0.9111338, a: 1}
   - sortingOrder: 5
     damages: 1
-    scale: 1.2
-    tint: {r: 1, g: 1, b: 1, a: 1}
+    scale: 1.5
+    tint: {r: 0.99215686, g: 0.9411765, b: 0.9098039, a: 1}
   - sortingOrder: 4
     damages: 1
-    scale: 1.2
-    tint: {r: 1, g: 1, b: 1, a: 1}
+    scale: 1.5
+    tint: {r: 0.99215686, g: 0.9411765, b: 0.9098039, a: 1}
   groundLayers:
     serializedVersion: 2
     m_Bits: 64
   onlyWhileCrouching: 1
-  minInterval: 0.3
-  maxInterval: 0.8
+  minInterval: 0.15
+  maxInterval: 0.4
   maxActive: 8
   spawnHeightOffset: 7
   aimAtPlayerChance: 0.7
   aimJitter: 1.5
   leadTarget: 1
   leadAmount: 1
-  gravityRange: {x: 1.5, y: 2.5}
+  gravityRange: {x: 1, y: 1.8}
   maxSpin: 90
   debugLog: 0
 --- !u!61 &1623664869

@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ce9d3daa22380449f89afc1baba52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Hazards.FallingPencaHazard
-  damage: 20
+  damage: 25
   hitInterval: 1
   snagLines: 3
   knockbackSpeed: 2.5
@@ -210,7 +210,7 @@ MonoBehaviour:
   upwardBias: 0.4
   holdWhenInside: 0
   insidePenetration: 0.1
-  maxFallSpeed: 14
+  maxFallSpeed: 9
   colliderShrink: 0.6
   fadeTime: 0.3
   maxLifetime: 6
