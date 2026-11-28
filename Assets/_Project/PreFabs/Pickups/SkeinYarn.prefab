@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3994851559708881874, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_Name
-      value: Madeja
+      value: SkeinYarn
       objectReference: {fileID: 0}
     - target: {fileID: 5408164470212333310, guid: 2527540495ab1da438569206f6c41504, type: 3}
       propertyPath: m_LocalScale.x

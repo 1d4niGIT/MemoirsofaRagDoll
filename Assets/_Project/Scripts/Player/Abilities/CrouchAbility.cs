@@ -11,8 +11,11 @@ namespace RagDoll.Player
     /// Funciona con BoxCollider2D o CapsuleCollider2D.
     /// </summary>
     [RequireComponent(typeof(PlayerController))]
-    public class CrouchAbility : AbilityBase
+    public class CrouchAbility : AbilityBase, ICrouchState
     {
+        /// <summary>Agachado ahora mismo (lo consultan las zonas del nivel).</summary>
+        public bool IsCrouching => IsActive;
+
         [SerializeField, Range(0.3f, 0.9f)] private float heightMultiplier = 0.5f;
         [SerializeField, Range(0.1f, 1f)] private float speedMultiplier = 0.5f;
         [SerializeField] private LayerMask ceilingLayers; // normalmente solo "Ground"

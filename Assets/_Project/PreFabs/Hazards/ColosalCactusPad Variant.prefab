@@ -93,6 +93,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4085745586346954013, guid: 2b8c3a6b735539b4b8c0bd7f6ac3171e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085745586346954013, guid: 2b8c3a6b735539b4b8c0bd7f6ac3171e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085745586346954013, guid: 2b8c3a6b735539b4b8c0bd7f6ac3171e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085745586346954013, guid: 2b8c3a6b735539b4b8c0bd7f6ac3171e, type: 3}
       propertyPath: m_SortingLayer
       value: 6
       objectReference: {fileID: 0}
@@ -234,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7756510675425644272, guid: 2b8c3a6b735539b4b8c0bd7f6ac3171e, type: 3}
       propertyPath: m_Name
-      value: AGiantCactusPad Variant
+      value: ColosalCactusPad Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

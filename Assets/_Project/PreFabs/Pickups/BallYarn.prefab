@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6546683891733583034}
   - component: {fileID: 367696731615119736}
   m_Layer: 0
-  m_Name: Ovillo
+  m_Name: BallYarn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1093,11 +1093,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 80.34
+      value: 49.62
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.531
+      value: 25.24
       objectReference: {fileID: 0}
     - target: {fileID: 9125963158452787188, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1255,6 +1255,137 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d319e0dd0ed3254b9a43dae0efc7166, type: 3}
+--- !u!1 &1623664867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1623664870}
+  - component: {fileID: 1623664869}
+  - component: {fileID: 1623664868}
+  m_Layer: 0
+  m_Name: ZoneCactusPadFalls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1623664868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623664867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21128b65640525418060b080224b060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RagDoll.Hazards.PencaRainZone
+  pencaPrefab: {fileID: 4136826928744929077, guid: 13ca521f9aab26642a9056863ac55f63, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 0630a24873528cb408a52b50d0cacc0a, type: 3}
+  - {fileID: -7244276932296747382, guid: 17a18dc0143554d41bd65cdcb250dbfb, type: 3}
+  - {fileID: 1373427392101739465, guid: 1059f9e5f47890e47a2689573adeff84, type: 3}
+  - {fileID: -3663863332392220392, guid: bfeb784e84c117740b948a79e1a1400b, type: 3}
+  - {fileID: -8435355551040190457, guid: c40baec065806884195439c625b5e542, type: 3}
+  - {fileID: 9069837127129049316, guid: c77b3dc53560e224bb3169da38c7b08c, type: 3}
+  - {fileID: 1246103975768537280, guid: 1773ba348f277fa47b80e7b4d36ab876, type: 3}
+  - {fileID: -2239920682249504037, guid: 1c5ca4d258332f14f839ace131f85588, type: 3}
+  - {fileID: 21300000, guid: fc62d0f55129fa142b25b510e9f9faf2, type: 3}
+  sortingLayerName: Hazards
+  depthLayers:
+  - sortingOrder: 7
+    damages: 1
+    scale: 1.5
+    tint: {r: 1, g: 1, b: 1, a: 1}
+  - sortingOrder: 5
+    damages: 1
+    scale: 1.2
+    tint: {r: 1, g: 1, b: 1, a: 1}
+  - sortingOrder: 4
+    damages: 1
+    scale: 1.2
+    tint: {r: 1, g: 1, b: 1, a: 1}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  onlyWhileCrouching: 1
+  minInterval: 0.3
+  maxInterval: 0.8
+  maxActive: 8
+  spawnHeightOffset: 7
+  aimAtPlayerChance: 0.7
+  aimJitter: 1.5
+  leadTarget: 1
+  leadAmount: 1
+  gravityRange: {x: 1.5, y: 2.5}
+  maxSpin: 90
+  debugLog: 0
+--- !u!61 &1623664869
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623664867}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 3.3773308, y: -5.052618}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 18.547966, y: 2.0293999}
+  m_EdgeRadius: 0
+--- !u!4 &1623664870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623664867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 60.363, y: 30.77502, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1696708102 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 3048295412830901453, guid: c0b505d12bb402845a5aa334887fb124, type: 3}
@@ -2965,3 +3096,4 @@ SceneRoots:
   - {fileID: 372089243}
   - {fileID: 422296376}
   - {fileID: 9146566762660272975}
+  - {fileID: 1623664870}
